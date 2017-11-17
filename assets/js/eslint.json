@@ -13,7 +13,7 @@
 	},
 	"rules": {
 		"no-alert": 2,
-		"no-console": 1,
+		"no-console": 0,
 		"curly": 2,
 		"semi": 2,
 		"quotes": [
