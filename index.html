@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    
+
 	<nav>
 		<div class="nav-wrapper">
 			<ul>
@@ -47,7 +47,7 @@
 			</ul>
 		</div>
 	</nav>
-	
+
     <div class="weather-container valign-wrapper">
 		<div class="flickr">
 			<div class="flickr__image"></div>
@@ -62,10 +62,10 @@
 			<div class="forecast"></div>
 		</div>
 	</div>
-	
+
 	<div id="loader" class="overlay valign-wrapper hide">
 		<div class="center-block">
-			
+
 			<div class="preloader-wrapper big active">
 				<div class="spinner-layer spinner-blue-only">
 					<div class="circle-clipper left">
@@ -79,10 +79,10 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
-	
+
 	<div id="about" class="modal">
 		<div class="modal-content">
 			<h4>About</h4>
@@ -113,7 +113,7 @@
 			<button type="button" class="btn-flat modal-action modal-close waves-effect waves-light">Close</button>
 		</div>
 	</div>
-	
+
 	<div id="credits" class="modal">
 		<div class="modal-content">
 			<h4>Credits</h4>
@@ -129,7 +129,7 @@
 				<a class="collection-item" href="https://scrollrevealjs.org/"><b>ScrollReveal</b>, animations for loading content</a>
 				<a class="collection-item" href="http://handlebarsjs.com/"><b>Handlebars</b>, a JavaScript templating engine</a>
 			</div>
-			
+
 			<p>
 				And here is a list of the development tools I used to build and package the extension.
 			</p>
@@ -144,14 +144,14 @@
 			<button type="button" class="btn-flat modal-action modal-close waves-effect waves-light">Close</button>
 		</div>
 	</div>
-	
+
 	<div id="error" class="modal">
 		<div class="modal-content">
 			<h4>Error</h4>
 			<p id="error--content"></p>
 		</div>
 	</div>
-	
+
 	<div id="tap-target-location" class="tap-target" data-activates="location">
 		<div class="tap-target-content">
 			<h5>Location</h5>
@@ -161,17 +161,17 @@
 			</p>
 		</div>
 	</div>
-	
+
 	<div id="tap-target-temp" class="tap-target" data-activates="tempscale">
 		<div class="tap-target-content">
 			<h5>Temperature Scale</h5>
 			<p>Switch between Fahrenheit and Celsius.</p>
 			<p>
-				<a href="#" class="btn btn-flat white">Got It</a>
+				<button type="button" class="btn btn-flat white">Got It</button>
 			</p>
 		</div>
 	</div>
-	
+
 	<script src="./dist/js/jquery.min.js"></script>
 	<script src="./dist/js/materialize.min.js"></script>
 	<script src="./dist/js/handlebars.min.js"></script>

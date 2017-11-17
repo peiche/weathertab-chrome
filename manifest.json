@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "WeatherTab",
 	"short_name": "WeatherTab",
-	"version": "1.4",
+	"version": "1.4.3",
 	"description": "A beautiful forecast with every new tab.",
 	"author": "Paul Eiche",
 	"chrome_url_overrides": {
