@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WeatherTab</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="./dist/css/main.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+	<nav>
+		<div class="nav-wrapper">
+			<ul>
+				<li>
+					<span id="location">
+						<i class="material-icons">location_on</i>
+						<span class="location"></span>
+					</span>
+				</li>
+			</ul>
+			<ul class="right">
+				<li>
+					<div id="tempscale" class="switch">
+						<label>
+							<i class="wi wi-fahrenheit"></i>
+							<input type="checkbox" name="useCelsius" value="true">
+							<span class="lever"></span>
+							<i class="wi wi-celsius"></i>
+						</label>
+					</div>
+				</li>
+				<li>
+					<button type="button" id="help" class="waves-effect waves-light">
+						<i class="material-icons">help</i>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="dropdown-button waves-effect waves-light" data-activates="dropdown">
+						<i class="material-icons">more_vert</i>
+					</button>
+					<ul id="dropdown" class="dropdown-content">
+						<li><a href="#about" class="modal-trigger waves-effect">About</a></li>
+						<li><a href="#credits" class="modal-trigger waves-effect">Credits</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+    <div class="weather-container valign-wrapper">
+		<div class="flickr">
+			<div class="flickr__image"></div>
+			<span class="flickr__info"></span>
+		</div>
+		<div class="container text-center">
+			<div class="weather"></div>
+		</div>
+	</div>
+	<div class="forecast-container valign-wrapper">
+		<div class="container">
+			<div class="forecast"></div>
+		</div>
+	</div>
+	
+	<div id="loader" class="overlay valign-wrapper hide">
+		<div class="center-block">
+			
+			<div class="preloader-wrapper big active">
+				<div class="spinner-layer spinner-blue-only">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div>
+					<div class="gap-patch">
+						<div class="circle"></div>
+					</div>
+					<div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div id="about" class="modal">
+		<div class="modal-content">
+			<h4>About</h4>
+			<p>
+				Hi! Welcome to WeatherTab, a new tab replacement extension. It only requires two permissions: geolocation and storage.
+			</p>
+			<p>
+				It needs access to geolocation because the extension can't show the weather for where you are unless it knows where you are.
+			</p>
+			<p>
+				It needs access to storage because it remembers your temperature scale of choice: Fahrenheit or Celsius. (The default is Fahrenheit. Click the indicator in the upper right corner to switch it.) If you have sync turned on, this setting will be synchronized to all your devices.
+			</p>
+			<p>
+				This extension was written in my free time. If you like it, please give it a good rating on the Chrome Store and consider donating.
+			</p>
+		</div>
+		<div class="modal-footer">
+			<span class="left">
+				<a class="btn blue waves-effect waves-light" href="https://chrome.google.com/webstore/detail/weathertab/abecbidofaadibdnbamkfdnhillmcakp">
+					<i class="material-icons">thumb_up</i>
+					Rate
+				</a>
+				<a class="btn green waves-effect waves-light" href="https://bit.ly/buypaulacoffee">
+					<i class="material-icons">local_cafe</i>
+					Donate
+				</a>
+			</span>
+			<button type="button" class="btn-flat modal-action modal-close waves-effect waves-light">Close</button>
+		</div>
+	</div>
+	
+	<div id="credits" class="modal">
+		<div class="modal-content">
+			<h4>Credits</h4>
+			<p>
+				This extension doesn't exist in a vaccuum. (If it did, nature would abhor it.) Here is a list of the projects I used to build the loveliness you see before you.
+			</p>
+			<div class="collection">
+				<a class="collection-item" href="https://developer.yahoo.com/yql/"><b>YQL</b>, the query API that drives this extension</a>
+				<a class="collection-item" href="http://jquery.com/"><b>jQuery</b>, which needs no introduction</a>
+				<a class="collection-item" href="http://materializecss.com/"><b>Materialize</b>, a Material Design CSS framework</a>
+				<a class="collection-item" href="https://erikflowers.github.io/weather-icons/"><b>Weather Icons</b>, a weather-themed icon font</a>
+				<a class="collection-item" href="https://material.io/icons/"><b>Material Design Icons</b>, a system icon font by Google</a>
+				<a class="collection-item" href="https://scrollrevealjs.org/"><b>ScrollReveal</b>, animations for loading content</a>
+				<a class="collection-item" href="http://handlebarsjs.com/"><b>Handlebars</b>, a JavaScript templating engine</a>
+			</div>
+			
+			<p>
+				And here is a list of the development tools I used to build and package the extension.
+			</p>
+			<div class="collection">
+				<a class="collection-item" href="https://yarnpkg.com/"><b>Yarn</b>, a package manager</a>
+				<a class="collection-item" href="https://gulpjs.com/"><b>Gulp</b>, a streaming task runner (plus a whole ton of plugins)</a>
+				<a class="collection-item" href="http://sass-lang.com/"><b>Sass</b>, a CSS preprocessor</a>
+				<a class="collection-item" href="http://postcss.org/"><b>PostCSS</b>, a CSS postprocessor (plus some plugins)</a>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn-flat modal-action modal-close waves-effect waves-light">Close</button>
+		</div>
+	</div>
+	
+	<div id="error" class="modal">
+		<div class="modal-content">
+			<h4>Error</h4>
+			<p id="error--content"></p>
+		</div>
+	</div>
+	
+	<div id="tap-target-location" class="tap-target" data-activates="location">
+		<div class="tap-target-content">
+			<h5>Location</h5>
+			<p>Automatically detected using geolocation.</p>
+			<p>
+				<button type="button" id="temp-tip" class="btn btn-flat white">Next</button>
+			</p>
+		</div>
+	</div>
+	
+	<div id="tap-target-temp" class="tap-target" data-activates="tempscale">
+		<div class="tap-target-content">
+			<h5>Temperature Scale</h5>
+			<p>Switch between Fahrenheit and Celsius.</p>
+			<p>
+				<a href="#" class="btn btn-flat white">Got It</a>
+			</p>
+		</div>
+	</div>
+	
+	<script src="./dist/js/jquery.min.js"></script>
+	<script src="./dist/js/materialize.min.js"></script>
+	<script src="./dist/js/handlebars.min.js"></script>
+	<script src="./dist/js/scrollreveal.min.js"></script>
+	<script src="./dist/js/templates.js"></script>
+	<script src="./dist/js/script.js"></script>
+</body>
+</html>

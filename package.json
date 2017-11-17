@@ -1,0 +1,36 @@
+{
+  "name": "weathertab",
+  "version": "1.0.0",
+  "description": "A colorful weather forecast every time you open a new tab.",
+  "main": "index.js",
+  "author": "Paul Eiche <peiche@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp",
+    "zip": "gulp zip"
+  },
+  "dependencies": {
+    "browserslist": "^2.3.3",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-declare": "^0.3.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-handlebars": "^4.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-util": "^3.0.8",
+    "gulp-wrap": "^0.13.0",
+    "gulp-zip": "^4.0.0",
+    "handlebars": "^4.0.10",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.1",
+    "postcss": "^6.0.9",
+    "postcss-scss": "^1.0.2",
+    "scrollreveal": "^3.3.6",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "weather-icons-sass": "^2.0.10"
+  }
+}

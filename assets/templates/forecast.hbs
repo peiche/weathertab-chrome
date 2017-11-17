@@ -1,0 +1,23 @@
+<div class="row">
+	
+	{{#each forecast}}
+		<div class="col s12 m6 l3 text-center forecast-item" data-low="{{ this.low }}" data-high="{{ this.high }}">
+			
+			<div class="card-panel">
+				
+				<p class="forecast__day">
+					{{ this.day }}
+				</p>
+				<p class="forecast__code">
+					<i class="wi wi-yahoo-{{ this.code }}"></i>
+				</p>
+				<p class="forecast__temp">
+					{{ this.high }}&deg;
+				</p>
+				
+			</div>
+			
+		</div>
+	{{/each}}
+	
+</div>

@@ -1,0 +1,11 @@
+{
+	"extends": "stylelint-config-standard",
+	"rules": {
+		"color-named": "never",
+		"indentation": "tab",
+		"declaration-block-single-line-max-declarations": 0,
+		"declaration-no-important": true,
+		"no-duplicate-selectors": true,
+		"property-no-vendor-prefix": true
+	}
+}
