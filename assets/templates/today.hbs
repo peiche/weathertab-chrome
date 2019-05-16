@@ -1,9 +1,17 @@
-<div class="weather-item weather__code">
-	<i class="wi wi-yahoo-{{ code }}"></i>
-</div>
-<div class="weather-item weather__condition">
-	{{ text }}
-</div>
-<div class="weather-item weather__temp">
-	{{ temp }}&deg;
-</div>
+<section class="hero hero--center" data-theme="dark">
+  <div class="container container--adaptive-sm">
+    <div class="hero__content">
+      <div class="text--xxxl">
+				<div class="text--xxxl flex flex--column">
+        	<span class="owi owi-{{icon}}" aria-hidden="true"></span>
+				</div>
+			</div>
+			<div class="text--xxxl">
+				{{text}}
+			</div>
+			<div class="text--xl margin-top--xs">
+				<strong>{{temp}}°</strong>
+			</div>
+    </div>
+  </div>
+</section>

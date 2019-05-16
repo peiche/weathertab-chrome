@@ -2,181 +2,64 @@
 <html>
 <head>
 	<title>WeatherTab</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="./dist/css/main.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body data-theme="default">
 
-	<nav>
-		<div class="nav-wrapper">
-			<ul>
-				<li>
-					<span id="location">
-						<i class="material-icons">location_on</i>
-						<span class="location"></span>
-					</span>
-				</li>
-			</ul>
-			<ul class="right">
-				<li>
-					<div id="tempscale" class="switch">
-						<label>
-							<i class="wi wi-fahrenheit"></i>
-							<input type="checkbox" name="useCelsius" value="true">
-							<span class="lever"></span>
-							<i class="wi wi-celsius"></i>
-						</label>
-					</div>
-				</li>
-				<li>
-					<button type="button" id="help" class="waves-effect waves-light">
-						<i class="material-icons">help</i>
-					</button>
-				</li>
-				<li>
-					<button type="button" class="dropdown-button waves-effect waves-light" data-activates="dropdown">
-						<i class="material-icons">more_vert</i>
-					</button>
-					<ul id="dropdown" class="dropdown-content">
-						<li><a href="#about" class="modal-trigger waves-effect">About</a></li>
-						<li><a href="#credits" class="modal-trigger waves-effect">Credits</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
+<header class="main-header js-main-header" data-theme="dark">
+  <div class="container container--lg">
+    <div class="main-header__layout">
+      <div class="main-header__logo">
+        <span class="icon-text">
+          <span>
+            <svg id="icon--loading" class="icon icon--sm icon--is-spinning" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" stroke-width="2"><g stroke-width="2" transform="translate(0, 0)"><g class="nc-loop_circle-02-24" transform="rotate(132.64142857149378 12 12)" stroke-width="2"> <circle opacity="0.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" cx="12" cy="12" r="11" stroke-linejoin="miter"></circle><path data-cap="butt" data-color="color-2" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M12,1 c6.0751324,0,11,4.9248676,11,11" stroke-linecap="butt" stroke-linejoin="miter"></path></g></g></svg>
+            <svg id="icon--location" class="icon icon--sm is-hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"><g transform="translate(0, 0)"><path fill="currentColor" d="M12,0C7.6,0,3,3.4,3,9c0,5.3,8,13.4,8.3,13.7c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3C13,22.4,21,14.3,21,9 C21,3.4,16.4,0,12,0z M12,12c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3S13.7,12,12,12z"></path></g></svg>
+            <svg id="icon--location-error" class="icon icon--sm is-hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"><g transform="translate(0, 0)"><path fill="currentColor" d="M11,19c0-3.866,3.134-7,7-7c0.111,0,0.219,0.011,0.329,0.017C18.742,10.963,19,9.937,19,9 c0-5.634-4.576-9-9-9S1,3.366,1,9c0,5.289,7.952,13.363,8.29,13.705C9.478,22.894,9.733,23,10,23s0.522-0.106,0.71-0.295 c0.062-0.063,0.387-0.393,0.871-0.917C11.209,20.933,11,19.991,11,19z M10,12c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3 S11.657,12,10,12z"></path> <polygon data-color="color-2" fill="var(--color-accent)" points="22.414,16 21,14.586 18,17.586 15,14.586 13.586,16 16.586,19 13.586,22 15,23.414 18,20.414 21,23.414 22.414,22 19.414,19 "></polygon></g></svg>
+          </span>
+          <span id="location"></span>
+        </span>
+      </div>
 
-    <div class="weather-container valign-wrapper">
-		<div class="flickr">
-			<div class="flickr__image"></div>
-			<span class="flickr__info"></span>
-		</div>
-		<div class="container text-center">
-			<div class="weather"></div>
-		</div>
-	</div>
-	<div class="forecast-container valign-wrapper">
-		<div class="container">
-			<div class="forecast"></div>
-		</div>
-	</div>
+      <ul class="radio-switch-v2">
+        <li class="radio-switch-v2__item">
+          <input class="radio-switch-v2__input reset" type="radio" name="radioSwitch2" id="radio1" checked>
+          <label class="radio-switch-v2__label" for="radio1">°F</label>
+        </li>
 
-	<div id="loader" class="overlay valign-wrapper hide">
-		<div class="center-block">
+        <li class="radio-switch-v2__item">
+          <input class="radio-switch-v2__input reset" type="radio" name="radioSwitch2" id="radio2">
+          <label class="radio-switch-v2__label" for="radio2">°C</label>
+          <div aria-hidden="true" class="radio-switch-v2__toggle"><span class="radio-switch-v2__marker"></span></div>
+        </li>
+      </ul>
 
-			<div class="preloader-wrapper big active">
-				<div class="spinner-layer spinner-blue-only">
-					<div class="circle-clipper left">
-						<div class="circle"></div>
-					</div>
-					<div class="gap-patch">
-						<div class="circle"></div>
-					</div>
-					<div class="circle-clipper right">
-						<div class="circle"></div>
-					</div>
-				</div>
-			</div>
+    </div>
+  </div>
+</header>
 
-		</div>
-	</div>
+<div id="today"></div>
 
-	<div id="about" class="modal">
-		<div class="modal-content">
-			<h4>About</h4>
-			<p>
-				Hi! Welcome to WeatherTab, a new tab replacement extension. It only requires two permissions: geolocation and storage.
-			</p>
-			<p>
-				It needs access to geolocation because the extension can't show the weather for where you are unless it knows where you are.
-			</p>
-			<p>
-				It needs access to storage because it remembers your temperature scale of choice: Fahrenheit or Celsius. (The default is Fahrenheit. Click the indicator in the upper right corner to switch it.) If you have sync turned on, this setting will be synchronized to all your devices.
-			</p>
-			<p>
-				This extension was written in my free time. If you like it, please give it a good rating on the Chrome Store and consider donating.
-			</p>
-		</div>
-		<div class="modal-footer">
-			<span class="left">
-				<a class="btn blue waves-effect waves-light" href="https://chrome.google.com/webstore/detail/weathertab/abecbidofaadibdnbamkfdnhillmcakp">
-					<i class="material-icons">thumb_up</i>
-					Rate
-				</a>
-				<a class="btn green waves-effect waves-light" href="https://bit.ly/buypaulacoffee">
-					<i class="material-icons">local_cafe</i>
-					Donate
-				</a>
-			</span>
-			<button type="button" class="btn-flat modal-action modal-close waves-effect waves-light">Close</button>
-		</div>
-	</div>
+<div class="container container--xl">
 
-	<div id="credits" class="modal">
-		<div class="modal-content">
-			<h4>Credits</h4>
-			<p>
-				This extension doesn't exist in a vaccuum. (If it did, nature would abhor it.) Here is a list of the projects I used to build the loveliness you see before you.
-			</p>
-			<div class="collection">
-				<a class="collection-item" href="https://developer.yahoo.com/yql/"><b>YQL</b>, the query API that drives this extension</a>
-				<a class="collection-item" href="http://jquery.com/"><b>jQuery</b>, which needs no introduction</a>
-				<a class="collection-item" href="http://materializecss.com/"><b>Materialize</b>, a Material Design CSS framework</a>
-				<a class="collection-item" href="https://erikflowers.github.io/weather-icons/"><b>Weather Icons</b>, a weather-themed icon font</a>
-				<a class="collection-item" href="https://material.io/icons/"><b>Material Design Icons</b>, a system icon font by Google</a>
-				<a class="collection-item" href="https://scrollrevealjs.org/"><b>ScrollReveal</b>, animations for loading content</a>
-				<a class="collection-item" href="http://handlebarsjs.com/"><b>Handlebars</b>, a JavaScript templating engine</a>
-			</div>
+  <div id="forecast" class="flex flex--space-between"></div>
 
-			<p>
-				And here is a list of the development tools I used to build and package the extension.
-			</p>
-			<div class="collection">
-				<a class="collection-item" href="https://yarnpkg.com/"><b>Yarn</b>, a package manager</a>
-				<a class="collection-item" href="https://gulpjs.com/"><b>Gulp</b>, a streaming task runner (plus a whole ton of plugins)</a>
-				<a class="collection-item" href="http://sass-lang.com/"><b>Sass</b>, a CSS preprocessor</a>
-				<a class="collection-item" href="http://postcss.org/"><b>PostCSS</b>, a CSS postprocessor (plus some plugins)</a>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn-flat modal-action modal-close waves-effect waves-light">Close</button>
-		</div>
-	</div>
+  <!-- <div class="card">
+    <div class="card__content">
+      <h4 class="card__title margin-bottom--xxxxs">Title of the Card</h4>
+      <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, suscipit.</p>
+      <div class="margin-top--sm">
+        <a class="btn btn--subtle btn--sm" href="#0">Read more</a>
+      </div>
+    </div>
+  </div> -->
 
-	<div id="error" class="modal">
-		<div class="modal-content">
-			<h4>Error</h4>
-			<p id="error--content"></p>
-		</div>
-	</div>
+</div>
 
-	<div id="tap-target-location" class="tap-target" data-activates="location">
-		<div class="tap-target-content">
-			<h5>Location</h5>
-			<p>Automatically detected using geolocation.</p>
-			<p>
-				<button type="button" id="temp-tip" class="btn btn-flat white">Next</button>
-			</p>
-		</div>
-	</div>
+<script src="./dist/js/handlebars.min.js"></script>
+<script src="./dist/js/templates.js"></script>
+<script src="./dist/js/app.js"></script>
 
-	<div id="tap-target-temp" class="tap-target" data-activates="tempscale">
-		<div class="tap-target-content">
-			<h5>Temperature Scale</h5>
-			<p>Switch between Fahrenheit and Celsius.</p>
-			<p>
-				<button type="button" class="btn btn-flat white">Got It</button>
-			</p>
-		</div>
-	</div>
-
-	<script src="./dist/js/jquery.min.js"></script>
-	<script src="./dist/js/materialize.min.js"></script>
-	<script src="./dist/js/handlebars.min.js"></script>
-	<script src="./dist/js/scrollreveal.min.js"></script>
-	<script src="./dist/js/templates.js"></script>
-	<script src="./dist/js/script.js"></script>
 </body>
 </html>

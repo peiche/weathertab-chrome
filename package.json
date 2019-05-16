@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "browserslist": "^2.3.3",
+    "codyhouse-framework": "^1.1.2",
+    "crypto-js": "^3.1.9-1",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
@@ -23,14 +25,17 @@
     "gulp-util": "^3.0.8",
     "gulp-wrap": "^0.13.0",
     "gulp-zip": "^4.0.0",
-    "handlebars": "^4.0.10",
+    "handlebars": "^4.1.2",
     "jquery": "^3.2.1",
-    "materialize-css": "^0.100.1",
+    "materialize-css": "^1.0.0",
+    "node-sass-tilde-importer": "^1.0.2",
+    "open-weather-icons": "0.0.8",
     "postcss": "^6.0.9",
     "postcss-scss": "^1.0.2",
     "scrollreveal": "^3.3.6",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
+    "unirest": "^0.6.0",
     "weather-icons-sass": "^2.0.10"
   }
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<script>
+
+const query = `London,uk`;
+const url = `https://community-open-weather-map.p.rapidapi.com/weather?q=${query}`;
+const params = {
+  headers: {
+    'X-RapidAPI-Host':  `community-open-weather-map.p.rapidapi.com`,
+    'X-RapidAPI-Key':   `ZlAZ9SzJ6VmshPnu3KyHk0VZPAwXp1QgRw1jsn7qlJX11hgRp1`
+  }
+};
+
+fetch(url, params)
+  .then(data => { return data.json() })
+  .then(res => { console.log(res) })
+  .catch(error => console.log(error));
+
+</script>
+
+</body>
+</html>

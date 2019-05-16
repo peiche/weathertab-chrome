@@ -1,18 +1,18 @@
 var autoprefixer	= require('autoprefixer'),
-	concat			= require('gulp-concat'),
-	declare			= require('gulp-declare'),
-	del				= require('del'),
-	eslint			= require('gulp-eslint'),
-	gulp			= require('gulp'),
-	handlebars		= require('gulp-handlebars'),
-	postcss			= require('gulp-postcss'),
-	sass			= require('gulp-sass'),
-	scss			= require('postcss-scss'),
-	stripDebug		= require('gulp-strip-debug'),
-	stylelint		= require('stylelint'),
-	util			= require('gulp-util'),
-	wrap			= require('gulp-wrap'),
-	zip				= require('gulp-zip');
+	concat					= require('gulp-concat'),
+	declare					= require('gulp-declare'),
+	del							= require('del'),
+	eslint					= require('gulp-eslint'),
+	gulp						= require('gulp'),
+	handlebars			= require('gulp-handlebars'),
+	postcss					= require('gulp-postcss'),
+	sass						= require('gulp-sass'),
+	scss						= require('postcss-scss'),
+	stripDebug			= require('gulp-strip-debug'),
+	stylelint				= require('stylelint'),
+	util						= require('gulp-util'),
+	wrap						= require('gulp-wrap'),
+	zip							= require('gulp-zip');
 
 gulp.task('clean', function() {
 	return del(['dist', 'release']);
@@ -35,8 +35,9 @@ gulp.task('copy-js', function() {
 
 gulp.task('copy-font', function() {
 	return gulp.src([
-        './node_modules/weather-icons-sass/font/**/*',
-		'./node_modules/materialize-css/dist/fonts/**/*'
+    // './node_modules/weather-icons-sass/font/**/*',
+		// './node_modules/materialize-css/dist/fonts/**/*'
+		'./node_modules/open-weather-icons/dist/fonts/**/*'
 	]).pipe(gulp.dest('./dist/fonts'));
 });
 
@@ -56,7 +57,9 @@ gulp.task('stylelint', function() {
 
 gulp.task('css', ['stylelint'], function() {
 	return gulp.src('./assets/scss/**/*.scss')
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass({
+			importer: require('node-sass-tilde-importer')
+		}).on('error', sass.logError))
 		.pipe(postcss([
 			autoprefixer
 		]))
@@ -98,7 +101,7 @@ gulp.task('default', ['clean'], function() {
 
 gulp.task('zip', function() {
 	del(['./release']);
-	
+
 	return gulp.src([
 			'./dist/**/*',
 			'./index.html',
