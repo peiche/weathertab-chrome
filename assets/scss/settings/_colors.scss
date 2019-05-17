@@ -92,5 +92,9 @@
     @include defineColorHSL(--color-contrast-medium, 240, 1%, 57%);
     @include defineColorHSL(--color-contrast-high, 0, 0%, 89%);
     @include defineColorHSL(--color-contrast-higher, 0, 0%, 100%);
+
+    --shadow-sm: 0 1px 1px rgba(255, 255, 255, .2), 0 1px 8px rgba(255, 255, 255, .1);
+    --shadow-md: 0 1px 8px rgba(255, 255, 255, .1), 0 8px 24px rgba(255, 255, 255, .15);
+    --shadow-lg: 0 1px 8px rgba(255, 255, 255, .1), 0 16px 48px rgba(255, 255, 255, .1), 0 24px 60px rgba(255, 255, 255, .1);
   }
 }

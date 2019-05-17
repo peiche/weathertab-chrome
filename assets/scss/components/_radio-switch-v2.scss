@@ -69,12 +69,12 @@ Descr: A custom radio button with a switch element and two labels
     margin-left: var(--space-xs);
   }
 
-  .radio-switch-v2__input:checked ~ & {
-    color: var(--color-primary);
-  }
+  // .radio-switch-v2__input:checked ~ & {
+  //   color: var(--color-primary);
+  // }
 
   .radio-switch-v2__input:focus ~ & { // focus effect if :focus-within is not supported
-    outline: 2px solid alpha(var(--color-primary), 0.2);
+    // outline: 2px solid alpha(var(--color-primary), 0.2);
     outline-offset: 2px;
   }
 
@@ -95,10 +95,10 @@ Descr: A custom radio button with a switch element and two labels
   border-radius: var(--radio-switch-v2-radius);
   box-shadow: 0 0 0 1px var(--color-contrast-low);
 
-  .radio-switch-v2:focus-within &,
-  .radio-switch-v2:active & {
-    box-shadow: 0 0 0 1px var(--color-contrast-low), 0 0 0 3px var(--color-contrast-lower); // focus effect if :focus-within is supported
-  }
+  // .radio-switch-v2:focus-within &,
+  // .radio-switch-v2:active & {
+  //   box-shadow: 0 0 0 1px var(--color-contrast-low), 0 0 0 3px var(--color-contrast-lower); // focus effect if :focus-within is supported
+  // }
 }
 
 .radio-switch-v2__marker {
@@ -109,7 +109,7 @@ Descr: A custom radio button with a switch element and two labels
   width: calc(var(--radio-switch-v2-height) - var(--radio-switch-v2-padding) * 2);
   height: calc(var(--radio-switch-v2-height) - var(--radio-switch-v2-padding) * 2);
   border-radius: 50%;
-  background-color: var(--color-primary);
+  background-color: var(--color-contrast-high);
   transition: left var(--radio-switch-v2-animation-duration);
   will-change: left;
 }

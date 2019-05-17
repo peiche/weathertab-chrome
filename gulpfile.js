@@ -18,34 +18,30 @@ gulp.task('clean', function() {
 	return del(['dist', 'release']);
 });
 
-gulp.task('copy-img', function() {
+gulp.task('copy:img', function() {
 	return gulp.src([
 		'./assets/img/**/*'
 	]).pipe(gulp.dest('./dist/img'));
 });
 
-gulp.task('copy-js', function() {
+gulp.task('copy:js', function() {
 	return gulp.src([
-		'./node_modules/jquery/dist/jquery.min.js',
-		'./node_modules/materialize-css/dist/js/materialize.min.js',
 		'./node_modules/handlebars/dist/handlebars.min.js',
-		'./node_modules/scrollreveal/dist/scrollreveal.min.js'
+		'./node_modules/codyhouse-framework/main/assets/js/util.js'
 	]).pipe(gulp.dest('./dist/js'));
 });
 
-gulp.task('copy-font', function() {
+gulp.task('copy:fonts', function() {
 	return gulp.src([
-    // './node_modules/weather-icons-sass/font/**/*',
-		// './node_modules/materialize-css/dist/fonts/**/*'
 		'./node_modules/open-weather-icons/dist/fonts/**/*'
-	]).pipe(gulp.dest('./dist/fonts'));
+	]).pipe(gulp.dest('./dist/font'));
 });
 
 gulp.task('copy', function() {
-	gulp.start('copy-img', 'copy-js', 'copy-font');
+	gulp.start('copy:img', 'copy:js', 'copy:fonts');
 });
 
-gulp.task('stylelint', function() {
+gulp.task('lint:css', function() {
 	return gulp.src('./assets/scss/**/*.scss')
 		.pipe(postcss([stylelint({
 			configFile: './assets/scss/stylelintrc.json',
@@ -55,7 +51,20 @@ gulp.task('stylelint', function() {
 		}));
 });
 
-gulp.task('css', ['stylelint'], function() {
+gulp.task('lint:js', function() {
+	return gulp.src(['./assets/js/**/*.js'])
+		.pipe(eslint({
+			configFile: './assets/js/eslint.json'
+		}))
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
+});
+
+gulp.task('lint', function() {
+	gulp.start('lint:css', 'lint:js')
+});
+
+gulp.task('build:css', function() {
 	return gulp.src('./assets/scss/**/*.scss')
 		.pipe(sass({
 			importer: require('node-sass-tilde-importer')
@@ -66,7 +75,7 @@ gulp.task('css', ['stylelint'], function() {
 		.pipe(gulp.dest('./dist/css/'));
 });
 
-gulp.task('templates', function() {
+gulp.task('build:templates', function() {
 	gulp.src('./assets/templates/**/*.hbs')
 		.pipe(handlebars({
 			handlebars: require('handlebars')
@@ -80,23 +89,18 @@ gulp.task('templates', function() {
 		.pipe(gulp.dest('./dist/js/'));
 });
 
-gulp.task('eslint', function() {
-	return gulp.src(['./assets/js/**/*.js'])
-		.pipe(eslint({
-			configFile: './assets/js/eslint.json'
-		}))
-		.pipe(eslint.format())
-		.pipe(eslint.failAfterError());
-});
-
-gulp.task('js', ['eslint'], function() {
+gulp.task('build:js', function() {
 	return gulp.src(['./assets/js/**/*.js'])
 		.pipe(!!util.env.production ? stripDebug() : util.noop())
 		.pipe(gulp.dest('./dist/js/'));
 });
 
+gulp.task('build', function() {
+	gulp.start('build:css', 'build:templates', 'build:js');
+});
+
 gulp.task('default', ['clean'], function() {
-	gulp.start('copy', 'css', 'templates', 'js');
+	gulp.start('copy', 'build');
 });
 
 gulp.task('zip', function() {
